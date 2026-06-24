@@ -4,11 +4,15 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import Header from './components/header/header.jsx'
 import './App.css'
+import Footer from './components/footer/footer.jsx'
 
-function App() {
+const App = () =>  {
 
   return (
+    <>
     <Header />
+    <Footer/>
+    </>
   )
 }
 
