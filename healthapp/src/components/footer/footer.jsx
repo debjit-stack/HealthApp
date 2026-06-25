@@ -1,9 +1,5 @@
 import styles from "./Footer.module.css";
-import {
-  FaLinkedin,
-  FaInstagram,
-  FaYoutube,
-} from "react-icons/fa";
+import { FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 const Footer = () => {
@@ -31,11 +27,7 @@ const Footer = () => {
         <div className={styles.top}>
           <div className={styles.about}>
             <div className={styles.logoWrapper}>
-              <img
-                src="/logo.png"
-                alt="Plenome"
-                className={styles.logo}
-              />
+              <img src="/logo.png" alt="Plenome" className={styles.logo} />
               <h2>Plenome</h2>
             </div>
 
@@ -84,6 +76,7 @@ const Footer = () => {
         </div>
 
         {/* Bottom Links */}
+        {/* Bottom Links */}
         <div className={styles.bottom}>
           <div>
             <h3>Platform</h3>
@@ -114,6 +107,10 @@ const Footer = () => {
         </div>
 
         <div className={styles.divider}></div>
+      </div>
+
+      <div className={styles.copyright}>
+        Copyrights © {new Date().getFullYear()} All Rights Reserved by Plenome
       </div>
     </footer>
   );
