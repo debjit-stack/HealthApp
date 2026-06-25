@@ -1,62 +1,156 @@
-.bodyHeader {
+/* --- Global Container --- */
+.headerContainer {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* --- Top Bar (White) --- */
+.topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem 2rem;
   background-color: #ffffff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
-  position: sticky;
-  top: 0;
-  z-index: 1000;
+  padding: 0.6rem 4rem;
+  font-size: 0.85rem;
+  color: #000000;
+  font-weight: 500;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.headerLogo a {
-  font-size: 1.5rem;
-  font-weight: 700;
-  color: #1a1a1a;
-  text-decoration: none;
-}
-
-.headerNav ul {
+.contactInfo, .socialIcons {
   display: flex;
-  list-style: none;
-  gap: 2rem;
-  margin: 0;
-  padding: 0;
-}
-
-.headerNav a {
-  text-decoration: none;
-  color: #4a4a4a;
-}
-
-.bodyHeader {
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 1rem 2rem;
+  gap: 1rem;
 }
 
-.headerLogo {
-  justify-self: start;
+.topLink {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: #000000;
+  text-decoration: none;
 }
 
-.headerNav {
-  justify-self: center;
+.icon {
+  font-size: 1rem;
 }
 
-@media (min-width: 600px) {
-  .header {grid-area: 1 / span 6;}
-  .menu {grid-area: 2 / span 1;}
-  .content {grid-area: 2 / span 4;}
-  .facts {grid-area: 3 / span 6;}
-  .footer {grid-area: 4 / span 6;}
+.divider {
+  color: #d1d5db;
+  font-weight: 300;
 }
 
-@media (min-width: 768px) {
-  .header {grid-area: 1 / span 6;}
-  .menu {grid-area: 2 / span 1;}
-  .content {grid-area: 2 / span 4;}
-  .facts {grid-area: 2 / span 1;}
-  .footer {grid-area: 3 / span 6;}
+.socialIcons a {
+  color: #000000;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  transition: opacity 0.2s;
+}
+
+.socialIcons a:hover {
+  opacity: 0.7;
+}
+
+/* --- Main Navigation (Black) --- */
+.mainNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #000000;
+  padding: 1rem 4rem;
+  color: #ffffff;
+}
+
+/* Logo Setup */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  text-decoration: none;
+}
+
+.logoIcon {
+  background-color: #ffffff;
+  color: #000000;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Links */
+.navLinks {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+
+.navLinks a {
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  transition: color 0.2s;
+}
+
+.navLinks a:hover {
+  color: #eab308; /* Yellow hover state */
+}
+
+.activeLink {
+  color: #eab308 !important; /* Yellow active state */
+}
+
+.caret {
+  font-size: 1.2rem;
+  margin-top: 2px;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.outlineBtn {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid #eab308;
+  padding: 0.6rem 1.2rem;
+  border-radius: 4px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s ease;
+}
+
+.outlineBtn:hover {
+  background-color: #eab308;
+  color: #000000;
+}
+
+.btnIcon {
+  font-size: 1.1rem;
+}
+
+.btnIconRight {
+  font-size: 1.2rem;
+  margin-left: 0.25rem;
 }

@@ -1,4 +1,5 @@
 import styles from "./Home.module.css";
+import React from "react";
 
 const Home = () => {
   return (
@@ -37,7 +38,7 @@ const Home = () => {
 
         <div className={styles.heroImage}>
           <img
-            src="https://images.unsplash.com/photo-1576091160550-2173dba999ef"
+            src="/hero-image.jpeg"
             alt="Healthcare"
           />
         </div>
@@ -126,7 +127,7 @@ const Home = () => {
 
         <div className={styles.aboutImage}>
           <img
-            src="https://images.unsplash.com/photo-1584982751601-97dcc096659c"
+            src="/about-image.jpeg"
             alt="Doctor"
           />
         </div>

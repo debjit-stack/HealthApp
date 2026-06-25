@@ -1,6 +1,8 @@
-import styles from "./Footer.module.css";
-import { FaLinkedin, FaInstagram, FaYoutube } from "react-icons/fa";
+import React from "react";
+import styles from "./footer.module.css";
+import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
+import { MdKeyboardArrowRight } from "react-icons/md"; 
 
 const Footer = () => {
   const platformLinks = [
@@ -27,7 +29,8 @@ const Footer = () => {
         <div className={styles.top}>
           <div className={styles.about}>
             <div className={styles.logoWrapper}>
-              <img src="/logo.png" alt="Plenome" className={styles.logo} />
+              {/* Fallback to text logo if image is missing, matching the header style */}
+              <div className={styles.logoIcon}>P</div>
               <h2>Plenome</h2>
             </div>
 
@@ -38,31 +41,27 @@ const Footer = () => {
             </p>
 
             <div className={styles.socials}>
-              <FaLinkedin />
-              <FaInstagram />
-              <FaXTwitter />
-              <FaYoutube />
+              <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
+              <a href="#" aria-label="Instagram"><FaInstagram /></a>
+              <a href="#" aria-label="X"><FaXTwitter /></a>
+              <a href="#" aria-label="YouTube"><FaYoutube /></a>
             </div>
           </div>
 
           <div className={styles.contact}>
             <h3>Get In Touch</h3>
-
             <p>
-              No: 1, 5th Floor, 'C' Block, Phase-II,
-              <br />
-              Health Technology Innovation Centre,
-              <br />
-              IIT Madras Research Park,
-              <br />
-              Kanagam, Tharamani,
-              <br />
+              No: 1, 5th Floor, 'C' Block, Phase-II,<br />
+              Health Technology Innovation Centre,<br />
+              IIT Madras Research Park,<br />
+              Kanagam, Tharamani,<br />
               Chennai, Tamil Nadu 600113.
             </p>
-
-            <p>info@plenome.com</p>
-            <p>sales@plenome.com</p>
-            <p>+91 967 700 5145</p>
+            <div className={styles.contactLinks}>
+              <a href="mailto:info@plenome.com">info@plenome.com</a>
+              <a href="mailto:sales@plenome.com">sales@plenome.com</a>
+              <p>+91 967 700 5145</p>
+            </div>
           </div>
 
           <div className={styles.mapContainer}>
@@ -76,13 +75,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Links */}
-        {/* Bottom Links */}
         <div className={styles.bottom}>
           <div>
             <h3>Platform</h3>
             <ul>
               {platformLinks.map((item) => (
-                <li key={item}>➜ {item}</li>
+                <li key={item}>
+                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                </li>
               ))}
             </ul>
           </div>
@@ -91,7 +91,9 @@ const Footer = () => {
             <h3>Products</h3>
             <ul>
               {productLinks.map((item) => (
-                <li key={item}>➜ {item}</li>
+                <li key={item}>
+                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                </li>
               ))}
             </ul>
           </div>
@@ -100,7 +102,9 @@ const Footer = () => {
             <h3>Company</h3>
             <ul>
               {companyLinks.map((item) => (
-                <li key={item}>➜ {item}</li>
+                <li key={item}>
+                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                </li>
               ))}
             </ul>
           </div>
@@ -109,9 +113,7 @@ const Footer = () => {
         <div className={styles.divider}></div>
       </div>
 
-      <div className={styles.copyright}>
-        Copyrights © {new Date().getFullYear()} All Rights Reserved by Plenome
-      </div>
+    
     </footer>
   );
 };

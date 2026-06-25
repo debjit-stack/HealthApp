@@ -1,21 +1,18 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import heroImg from './assets/hero.png'
 import Header from './components/header/header.jsx'
-import './App.css'
-import Footer from './components/footer/footer.jsx'
 import Home from './components/home/home.jsx'
+import Footer from './components/footer/footer.jsx'
+import './App.css'
 
 const App = () =>  {
-
   return (
     <>
-    <Header />
-    <Home/>
-    <Footer/>
+      <Header />
+      <main>
+        <Home />
+      </main>
+      <Footer />
     </>
   )
 }
 
-export default App
+export default App;
