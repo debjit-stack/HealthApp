@@ -1,0 +1,585 @@
+.page {
+  background: #ffffff;
+  color: #0f172a;
+}
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #1e3a4a 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 100px 8% 70px;
+  text-align: center;
+}
+
+.eyebrow {
+  display: inline-block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #eab308;
+  margin-bottom: 1.2rem;
+}
+
+.hero h1 {
+  font-size: 3.8rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.25rem;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.7);
+  max-width: 580px;
+  margin: 0 auto 3rem;
+}
+
+.productNav {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.productNavItem {
+  padding: 0.55rem 1.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 50px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-decoration: none;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.productNavItem:hover {
+  background: rgba(234, 179, 8, 0.15);
+  border-color: #eab308;
+  color: #eab308;
+}
+
+/* ── PRODUCT SECTIONS ── */
+.productSection {
+  padding: 100px 8%;
+}
+
+.productSectionAlt {
+  padding: 100px 8%;
+  background: #f8fafc;
+}
+
+.productLayout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.reverse {
+  direction: rtl;
+}
+
+.reverse > * {
+  direction: ltr;
+}
+
+.productInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  width: fit-content;
+}
+
+.tagDark {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  width: fit-content;
+  background: rgba(234, 179, 8, 0.15);
+  color: #eab308;
+}
+
+.tagGold {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.3rem 0.85rem;
+  border-radius: 50px;
+  margin-bottom: 1rem;
+  width: fit-content;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.productInfo h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.productInfo > p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4b5563;
+  margin-bottom: 1.75rem;
+}
+
+.featureList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.6rem 1rem;
+}
+
+.featureList li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.9rem;
+  color: #374151;
+  font-weight: 500;
+}
+
+.checkMark {
+  color: #22c55e;
+  font-weight: 800;
+  font-size: 0.9rem;
+  flex-shrink: 0;
+}
+
+.productCtas {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+/* Product Visual Mockup */
+.productVisual {
+  border-radius: 20px;
+  padding: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 340px;
+}
+
+.mockCard {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  overflow: hidden;
+  width: 100%;
+  max-width: 320px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12);
+}
+
+.mockHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #f0f0f0;
+  background: #fafafa;
+}
+
+.mockDot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.mockBody {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+}
+
+.mockRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mockLabel {
+  font-size: 0.82rem;
+  color: #6b7280;
+}
+
+.mockVal {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.mockDivider {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: 0.25rem 0;
+}
+
+/* ── BUTTONS ── */
+.btnPrimary {
+  padding: 0.85rem 1.8rem;
+  background: #577c83;
+  color: #ffffff;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btnPrimary:hover {
+  background: #3d5f65;
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  padding: 0.85rem 1.8rem;
+  background: transparent;
+  color: #0f172a;
+  border: 1.5px solid #d1d5db;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.btnGhost:hover {
+  border-color: #0f172a;
+  background: #f8fafc;
+}
+
+.btnYellow {
+  padding: 0.85rem 2rem;
+  background: #eab308;
+  color: #000000;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btnYellow:hover {
+  background: #ca9a06;
+  transform: translateY(-2px);
+}
+
+/* ── SECTION HEADERS ── */
+.sectionHeader {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto 3.5rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.6rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+  color: #0f172a;
+}
+
+.lightHeading {
+  color: #ffffff !important;
+}
+
+.sectionHeader p {
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: #4b5563;
+}
+
+.lightSub {
+  color: rgba(255, 255, 255, 0.65) !important;
+}
+
+/* ── ASHWIN ── */
+.ashwinSection {
+  padding: 100px 8%;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.ashwinGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+  margin-bottom: 3rem;
+}
+
+.ashwinCard {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  padding: 1.75rem;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.ashwinCard:hover {
+  background: rgba(255, 255, 255, 0.07);
+  border-color: rgba(234, 179, 8, 0.3);
+}
+
+.ashwinIcon {
+  font-size: 1.8rem;
+  display: block;
+  margin-bottom: 0.8rem;
+}
+
+.ashwinCard h3 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 0.6rem;
+}
+
+.ashwinCard p {
+  font-size: 0.88rem;
+  color: rgba(255, 255, 255, 0.55);
+  line-height: 1.7;
+}
+
+.ashwinCta {
+  text-align: center;
+}
+
+/* ── AAYUSH ── */
+.aayushGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+}
+
+.aayushCard {
+  border-radius: 16px;
+  padding: 2rem;
+}
+
+.aayushCard h3 {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.aayushCard p {
+  font-size: 0.92rem;
+  color: #374151;
+  line-height: 1.7;
+}
+
+/* ── ENTERPRISE ── */
+.enterpriseSection {
+  padding: 100px 8%;
+  background: #fefce8;
+}
+
+.tierGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.tierCard {
+  background: #ffffff;
+  border: 1.5px solid #e5e7eb;
+  border-radius: 16px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.tierHighlight {
+  border-color: #eab308;
+  box-shadow: 0 8px 32px rgba(234, 179, 8, 0.15);
+}
+
+.popularBadge {
+  position: absolute;
+  top: -12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #eab308;
+  color: #000;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 0.2rem 0.8rem;
+  border-radius: 50px;
+  white-space: nowrap;
+}
+
+.tierCard h3 {
+  font-size: 1.3rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin-bottom: 0.25rem;
+}
+
+.tierCard > p {
+  font-size: 0.88rem;
+  color: #6b7280;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.tierList {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.tierList li {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 0.88rem;
+  color: #374151;
+}
+
+.tierList li span {
+  color: #22c55e;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+/* ── COMPARISON TABLE ── */
+.comparisonSection {
+  padding: 100px 8%;
+}
+
+.tableWrap {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.table th {
+  text-align: center;
+  padding: 1rem 1.25rem;
+  background: #0f172a;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.88rem;
+}
+
+.table th:first-child {
+  text-align: left;
+  border-radius: 10px 0 0 0;
+}
+
+.table th:last-child {
+  border-radius: 0 10px 0 0;
+}
+
+.table td {
+  padding: 0.9rem 1.25rem;
+  text-align: center;
+  border-bottom: 1px solid #f0f0f0;
+  color: #374151;
+}
+
+.table td:first-child {
+  text-align: left;
+  font-weight: 500;
+  color: #0f172a;
+}
+
+.table tr:hover td {
+  background: #f8fafc;
+}
+
+.check {
+  color: #22c55e;
+  font-weight: 800;
+  font-size: 1.1rem;
+}
+
+.cross {
+  color: #d1d5db;
+  font-size: 1.1rem;
+}
+
+/* ── BOTTOM CTA ── */
+.bottomCta {
+  text-align: center;
+  padding: 100px 8%;
+  background: #0f172a;
+  color: #ffffff;
+}
+
+.bottomCta h2 {
+  font-size: 2.4rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.bottomCta p {
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 2.5rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .hero h1 { font-size: 2.6rem; }
+  .productLayout { grid-template-columns: 1fr; gap: 3rem; }
+  .reverse { direction: ltr; }
+  .ashwinGrid { grid-template-columns: 1fr 1fr; }
+  .aayushGrid { grid-template-columns: 1fr; }
+  .tierGrid { grid-template-columns: 1fr; }
+  .featureList { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .hero { padding: 70px 5% 50px; }
+  .hero h1 { font-size: 2rem; }
+  .productSection, .productSectionAlt, .ashwinSection,
+  .enterpriseSection, .comparisonSection, .bottomCta { padding: 70px 5%; }
+  .ashwinGrid { grid-template-columns: 1fr; }
+  .sectionHeader h2 { font-size: 2rem; }
+}

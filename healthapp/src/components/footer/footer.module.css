@@ -1,8 +1,7 @@
-/* --- Global Footer Container --- */
 .footer {
   background-color: #000000;
   color: #ffffff;
-  padding: 5rem 4rem 1.5rem; /* 4rem horizontal padding matches header */
+  padding: 5rem 4rem 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
 }
 
@@ -12,7 +11,6 @@
   margin: 0 auto;
 }
 
-/* --- Top Section Grid --- */
 .top {
   display: grid;
   grid-template-columns: 1.2fr 1fr 1fr;
@@ -20,7 +18,6 @@
   margin-bottom: 4rem;
 }
 
-/* --- Logo & About --- */
 .logoWrapper {
   display: flex;
   align-items: center;
@@ -51,11 +48,10 @@
 .about p {
   font-size: 1rem;
   line-height: 1.7;
-  color: #d1d5db; /* Softer text color for better readability */
+  color: #d1d5db;
   margin-bottom: 2rem;
 }
 
-/* --- Social Icons --- */
 .socials {
   display: flex;
   gap: 1.25rem;
@@ -75,23 +71,22 @@
 }
 
 .socials a:hover {
-  background-color: #eab308; /* Yellow from header */
+  background-color: #eab308;
   color: #000000;
   transform: translateY(-2px);
 }
 
-/* --- Contact Section --- */
 .contact h3,
 .bottom h3 {
-  font-size: 1.25rem;
+  font-size: 1.1rem;
   font-weight: 600;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.25rem;
   color: #ffffff;
 }
 
 .contact p {
   line-height: 1.7;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   color: #d1d5db;
   margin-bottom: 1rem;
 }
@@ -99,13 +94,14 @@
 .contactLinks {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.4rem;
 }
 
-.contactLinks a, .contactLinks p {
+.contactLinks a,
+.contactLinks p {
   color: #d1d5db;
   text-decoration: none;
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   transition: color 0.2s;
   margin: 0;
 }
@@ -114,7 +110,6 @@
   color: #eab308;
 }
 
-/* --- Map --- */
 .mapContainer {
   width: 100%;
   border-radius: 8px;
@@ -125,16 +120,16 @@
 .map {
   width: 100%;
   height: 100%;
-  min-height: 250px;
+  min-height: 220px;
   border: none;
   display: block;
 }
 
-/* --- Bottom Links Grid --- */
 .bottom {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
+  padding-bottom: 1rem;
 }
 
 .bottom ul {
@@ -144,35 +139,42 @@
 }
 
 .bottom li {
-  margin-bottom: 0.75rem;
-  font-size: 0.95rem;
+  margin-bottom: 0.6rem;
+  font-size: 0.9rem;
   color: #d1d5db;
-  cursor: pointer;
   transition: all 0.2s ease;
   display: flex;
   align-items: center;
+}
+
+.bottom li a {
+  color: #d1d5db;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
   gap: 0.25rem;
+  transition: all 0.2s ease;
 }
 
 .arrow {
   color: #6b7280;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   transition: color 0.2s ease;
+  flex-shrink: 0;
 }
 
-.bottom li:hover {
+.bottom li a:hover {
   color: #eab308;
-  transform: translateX(4px); /* Smooth slide right on hover */
+  transform: translateX(4px);
 }
 
-.bottom li:hover .arrow {
+.bottom li a:hover .arrow {
   color: #eab308;
 }
 
-/* --- Divider & Copyright --- */
 .divider {
   width: 100%;
-  margin-top: 4rem;
+  margin-top: 3rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
@@ -181,15 +183,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 2rem;
-  color: #9ca3af;
-  font-size: 0.9rem;
+  padding: 1.5rem 0;
+  color: #6b7280;
+  font-size: 0.85rem;
 }
 
-/* --- Responsive Adjustments --- */
 @media (max-width: 992px) {
   .footer {
-    padding: 3rem 2rem 1.5rem;
+    padding: 3rem 2rem 0;
   }
 
   .top {
@@ -197,12 +198,8 @@
     gap: 3rem;
   }
 
-  .map {
-    height: 300px;
-  }
-
   .bottom {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 }

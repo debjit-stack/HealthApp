@@ -1,27 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styles from "./footer.module.css";
 import { FaLinkedinIn, FaInstagram, FaYoutube } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
-import { MdKeyboardArrowRight } from "react-icons/md"; 
+import { MdKeyboardArrowRight } from "react-icons/md";
+
+const platformLinks = [
+  { label: "CareOS", to: "/platform#careos" },
+  { label: "Plenome Intelligence", to: "/platform#intelligence" },
+  { label: "Plenome+", to: "/platform#plus" },
+  { label: "Enterprise & eGov", to: "/platform#enterprise" },
+];
+
+const productLinks = [
+  { label: "CareOS for Clinics", to: "/products#clinics" },
+  { label: "CareOS for Hospitals", to: "/products#hospitals" },
+  { label: "Ashwin AI", to: "/products#ashwin" },
+  { label: "Aayush", to: "/products#aayush" },
+  { label: "Enterprise & Public-Sector", to: "/products#enterprise" },
+];
+
+const companyLinks = [
+  { label: "About Us", to: "/company#about" },
+  { label: "Careers", to: "/company#careers" },
+  { label: "Contact Us", to: "/company#contact" },
+];
 
 const Footer = () => {
-  const platformLinks = [
-    "CareOS",
-    "Plenome Intelligence",
-    "Plenome+",
-    "Enterprise & eGov",
-  ];
-
-  const productLinks = [
-    "CareOS for Clinics",
-    "CareOS for Hospitals",
-    "Ashwin AI",
-    "Aayush",
-    "Enterprise and Public-Sector Healthcare Solutions",
-  ];
-
-  const companyLinks = ["About Us", "Careers", "Contact Us"];
-
   return (
     <footer className={styles.footer}>
       <div className={styles.container}>
@@ -29,17 +34,14 @@ const Footer = () => {
         <div className={styles.top}>
           <div className={styles.about}>
             <div className={styles.logoWrapper}>
-              {/* Fallback to text logo if image is missing, matching the header style */}
               <div className={styles.logoIcon}>P</div>
               <h2>Plenome</h2>
             </div>
-
             <p>
               Plenome is an IIT Madras incubated and MeitY-recognized startup
               working on blockchain technology for medical data security and
               interoperability.
             </p>
-
             <div className={styles.socials}>
               <a href="#" aria-label="LinkedIn"><FaLinkedinIn /></a>
               <a href="#" aria-label="Instagram"><FaInstagram /></a>
@@ -80,40 +82,45 @@ const Footer = () => {
             <h3>Platform</h3>
             <ul>
               {platformLinks.map((item) => (
-                <li key={item}>
-                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                <li key={item.label}>
+                  <Link to={item.to}>
+                    <MdKeyboardArrowRight className={styles.arrow} /> {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-
           <div>
             <h3>Products</h3>
             <ul>
               {productLinks.map((item) => (
-                <li key={item}>
-                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                <li key={item.label}>
+                  <Link to={item.to}>
+                    <MdKeyboardArrowRight className={styles.arrow} /> {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
-
           <div>
             <h3>Company</h3>
             <ul>
               {companyLinks.map((item) => (
-                <li key={item}>
-                  <MdKeyboardArrowRight className={styles.arrow} /> {item}
+                <li key={item.label}>
+                  <Link to={item.to}>
+                    <MdKeyboardArrowRight className={styles.arrow} /> {item.label}
+                  </Link>
                 </li>
               ))}
             </ul>
           </div>
         </div>
 
-        <div className={styles.divider}></div>
+        <div className={styles.divider} />
+        <div className={styles.copyright}>
+          © {new Date().getFullYear()} Plenome Health Technologies Pvt. Ltd. All rights reserved.
+        </div>
       </div>
-
-    
     </footer>
   );
 };

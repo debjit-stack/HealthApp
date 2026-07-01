@@ -2,6 +2,9 @@
 .headerContainer {
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 /* --- Top Bar (White) --- */
@@ -17,7 +20,8 @@
   border-bottom: 1px solid #eaeaea;
 }
 
-.contactInfo, .socialIcons {
+.contactInfo,
+.socialIcons {
   display: flex;
   align-items: center;
   gap: 1rem;
@@ -62,7 +66,7 @@
   color: #ffffff;
 }
 
-/* Logo Setup */
+/* Logo */
 .logo {
   display: flex;
   align-items: center;
@@ -87,37 +91,126 @@
   font-size: 1.5rem;
   font-weight: 600;
   letter-spacing: 0.5px;
+  color: #ffffff;
 }
 
-/* Links */
+/* Nav Links */
 .navLinks {
   display: flex;
   align-items: center;
   gap: 2.5rem;
 }
 
-.navLinks a {
+.navLink {
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
   font-size: 1rem;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
   transition: color 0.2s;
 }
 
-.navLinks a:hover {
-  color: #eab308; /* Yellow hover state */
+.navLink:hover {
+  color: #eab308;
 }
 
 .activeLink {
-  color: #eab308 !important; /* Yellow active state */
+  color: #eab308 !important;
+}
+
+/* Dropdown trigger button */
+.dropdown {
+  position: relative;
+}
+
+.navBtn {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0;
+  font-family: inherit;
+  transition: color 0.2s;
+}
+
+.navBtn:hover {
+  color: #eab308;
 }
 
 .caret {
   font-size: 1.2rem;
-  margin-top: 2px;
+  transition: transform 0.2s ease;
+}
+
+.caretOpen {
+  transform: rotate(180deg);
+}
+
+/* --- Mega Menu --- */
+.megaMenu {
+  position: absolute;
+  top: calc(100% + 1.2rem);
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+  min-width: 280px;
+  padding: 0.5rem;
+  z-index: 999;
+  border-top: 3px solid #eab308;
+  animation: fadeSlideDown 0.18s ease;
+}
+
+@keyframes fadeSlideDown {
+  from {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+  }
+}
+
+.megaMenuInner {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.megaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.75rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: background 0.15s ease;
+}
+
+.megaItem:hover {
+  background: #f9fafb;
+}
+
+.megaLabel {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+.megaItem:hover .megaLabel {
+  color: #eab308;
+}
+
+.megaDesc {
+  font-size: 0.82rem;
+  color: #6b7280;
+  line-height: 1.4;
 }
 
 /* Action Buttons */
@@ -139,6 +232,8 @@
   align-items: center;
   gap: 0.5rem;
   transition: all 0.2s ease;
+  text-decoration: none;
+  font-family: inherit;
 }
 
 .outlineBtn:hover {
@@ -153,4 +248,20 @@
 .btnIconRight {
   font-size: 1.2rem;
   margin-left: 0.25rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .topBar,
+  .mainNav {
+    padding: 0.6rem 1.5rem;
+  }
+
+  .actionButtons {
+    display: none;
+  }
+
+  .navLinks {
+    gap: 1.5rem;
+  }
 }
