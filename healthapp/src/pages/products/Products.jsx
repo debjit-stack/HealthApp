@@ -122,15 +122,25 @@ const Products = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1));
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
-  }, [location]);
+  }, [location.pathname, location.hash]);
+
+  const scrollTo = (id) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
 
       {/* ── HERO ── */}
       <section className={styles.hero}>
@@ -141,11 +151,11 @@ const Products = () => {
           mission — Plenome products are designed to fit the workflow, not the other way around.
         </p>
         <div className={styles.productNav}>
-          <a href="#clinics" className={styles.productNavItem}>CareOS Clinics</a>
-          <a href="#hospitals" className={styles.productNavItem}>CareOS Hospitals</a>
-          <a href="#ashwin" className={styles.productNavItem}>Ashwin AI</a>
-          <a href="#aayush" className={styles.productNavItem}>Aayush</a>
-          <a href="#enterprise" className={styles.productNavItem}>Enterprise</a>
+          <button onClick={() => scrollTo('clinics')} className={styles.productNavItem}>CareOS Clinics</button>
+          <button onClick={() => scrollTo('hospitals')} className={styles.productNavItem}>CareOS Hospitals</button>
+          <button onClick={() => scrollTo('ashwin')} className={styles.productNavItem}>Ashwin AI</button>
+          <button onClick={() => scrollTo('aayush')} className={styles.productNavItem}>Aayush</button>
+          <button onClick={() => scrollTo('enterprise')} className={styles.productNavItem}>Enterprise</button>
         </div>
       </section>
 
@@ -193,7 +203,7 @@ const Products = () => {
 
       {/* ── CAREOS HOSPITALS ── */}
       <section id="hospitals" className={styles.productSectionAlt}>
-        <div className={styles.productLayout + ' ' + styles.reverse}>
+        <div className={`${styles.productLayout} ${styles.reverse}`}>
           <div className={styles.productVisual} style={{ background: 'linear-gradient(135deg, #0f172a, #1e3a4a)' }}>
             <div className={styles.mockCard} style={{ background: '#1e293b', borderColor: 'rgba(255,255,255,0.1)' }}>
               <div className={styles.mockHeader} style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
@@ -350,7 +360,7 @@ const Products = () => {
         <Link to="/company#contact" className={styles.btnYellow}>Talk to a Solutions Architect</Link>
       </section>
 
-    </main>
+    </div>
   );
 };
 

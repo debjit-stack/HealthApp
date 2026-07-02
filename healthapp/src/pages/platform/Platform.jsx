@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useLayoutEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import styles from './platform.module.css';
 
@@ -84,15 +84,20 @@ const Platform = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1));
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
-  }, [location]);
+  }, [location.pathname, location.hash]);
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
 
       {/* ── HERO ── */}
       <section className={styles.hero}>
@@ -257,7 +262,7 @@ const Platform = () => {
         <Link to="/company#contact" className={styles.btnPrimary}>Book a Demo</Link>
       </section>
 
-    </main>
+    </div>
   );
 };
 

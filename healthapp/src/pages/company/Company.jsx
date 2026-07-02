@@ -41,12 +41,17 @@ const Company = () => {
 
   useEffect(() => {
     if (location.hash) {
-      const el = document.getElementById(location.hash.slice(1));
-      if (el) setTimeout(() => el.scrollIntoView({ behavior: 'smooth', block: 'start' }), 100);
+      const id = location.hash.slice(1);
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const el = document.getElementById(id);
+          if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+      });
     } else {
-      window.scrollTo(0, 0);
+      window.scrollTo({ top: 0, behavior: 'instant' });
     }
-  }, [location]);
+  }, [location.pathname, location.hash]);
 
   const handleChange = (e) => {
     setFormData((prev) => ({ ...prev, [e.target.name]: e.target.value }));
@@ -58,7 +63,7 @@ const Company = () => {
   };
 
   return (
-    <main className={styles.page}>
+    <div className={styles.page}>
 
       {/* ── HERO ── */}
       <section className={styles.hero}>
@@ -193,13 +198,13 @@ const Company = () => {
               </div>
               <h3>{r.title}</h3>
               <div className={styles.roleLocation}>📍 {r.location}</div>
-              <Link to="#contact" className={styles.applyBtn}>Apply Now →</Link>
+              <Link to="/company#contact" className={styles.applyBtn}>Apply Now →</Link>
             </div>
           ))}
         </div>
         <p className={styles.openApp}>
           Don't see your role?{' '}
-          <Link to="#contact" className={styles.openLink}>Send us an open application.</Link>
+          <Link to="/company#contact" className={styles.openLink}>Send us an open application.</Link>
         </p>
       </section>
 
@@ -300,7 +305,7 @@ const Company = () => {
         </div>
       </section>
 
-    </main>
+    </div>
   );
 };
 

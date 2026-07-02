@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 
 const Home = () => {
   return (
-    <main className={styles.home}>
+    <div className={styles.home}>
       {/* Hero Section */}
       <section className={styles.hero}>
         <div className={styles.heroContent}>
@@ -130,7 +130,7 @@ const Home = () => {
           <Link to="/platform" className={styles.ctaSecondary}>Explore Platform</Link>
         </div>
       </section>
-    </main>
+    </div>
   );
 };
 

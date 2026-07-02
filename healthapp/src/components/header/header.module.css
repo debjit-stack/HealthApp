@@ -1,20 +1,21 @@
-/* --- Global Container --- */
+/* ── CONTAINER ── */
 .headerContainer {
   width: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   position: sticky;
   top: 0;
-  z-index: 1000;
+  /* Lower z-index so megaMenu children can exceed it via their own stacking context */
+  z-index: 100;
 }
 
-/* --- Top Bar (White) --- */
+/* ── TOP BAR ── */
 .topBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #ffffff;
-  padding: 0.6rem 4rem;
-  font-size: 0.85rem;
+  padding: 0.55rem 4rem;
+  font-size: 0.82rem;
   color: #000000;
   font-weight: 500;
   border-bottom: 1px solid #eaeaea;
@@ -30,13 +31,18 @@
 .topLink {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   color: #000000;
   text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.topLink:hover {
+  opacity: 0.65;
 }
 
 .icon {
-  font-size: 1rem;
+  font-size: 0.95rem;
 }
 
 .divider {
@@ -46,32 +52,35 @@
 
 .socialIcons a {
   color: #000000;
-  font-size: 1.1rem;
+  font-size: 1.05rem;
   display: flex;
   align-items: center;
   transition: opacity 0.2s;
 }
 
 .socialIcons a:hover {
-  opacity: 0.7;
+  opacity: 0.6;
 }
 
-/* --- Main Navigation (Black) --- */
+/* ── MAIN NAV ── */
 .mainNav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   background-color: #000000;
-  padding: 1rem 4rem;
+  padding: 0.9rem 4rem;
   color: #ffffff;
+  position: relative;
+  z-index: 100;
 }
 
-/* Logo */
+/* ── LOGO ── */
 .logo {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   text-decoration: none;
+  flex-shrink: 0;
 }
 
 .logoIcon {
@@ -83,18 +92,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  font-weight: bold;
-  font-size: 1.2rem;
+  font-weight: 800;
+  font-size: 1.1rem;
 }
 
 .logoText {
-  font-size: 1.5rem;
-  font-weight: 600;
-  letter-spacing: 0.5px;
+  font-size: 1.45rem;
+  font-weight: 700;
+  letter-spacing: 0.3px;
   color: #ffffff;
 }
 
-/* Nav Links */
+/* ── DESKTOP NAV LINKS ── */
 .navLinks {
   display: flex;
   align-items: center;
@@ -105,8 +114,9 @@
   color: #ffffff;
   text-decoration: none;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.97rem;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
 .navLink:hover {
@@ -117,59 +127,73 @@
   color: #eab308 !important;
 }
 
-/* Dropdown trigger button */
+/* ── DROPDOWN WRAPPER ──
+   Extra padding-bottom creates an invisible bridge between the
+   trigger button and the menu so mouseLeave doesn't fire in the gap */
 .dropdown {
   position: relative;
+  padding-bottom: 1.2rem;
+  margin-bottom: -1.2rem;
 }
 
+/* ── DROPDOWN TRIGGER BUTTON ── */
 .navBtn {
   background: none;
   border: none;
   color: #ffffff;
   font-weight: 600;
-  font-size: 1rem;
+  font-size: 0.97rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.25rem;
+  gap: 0.2rem;
   padding: 0;
   font-family: inherit;
   transition: color 0.2s;
+  white-space: nowrap;
 }
 
-.navBtn:hover {
+.navBtn:hover,
+.navBtn:focus-visible {
   color: #eab308;
+  outline: none;
 }
 
 .caret {
-  font-size: 1.2rem;
+  font-size: 1.15rem;
   transition: transform 0.2s ease;
+  margin-top: 1px;
 }
 
 .caretOpen {
   transform: rotate(180deg);
 }
 
-/* --- Mega Menu --- */
+/* ── MEGA MENU ──
+   top: 100% sits flush against the bottom of .dropdown's content area.
+   The padding-bottom on .dropdown fills the visual gap so the mouse
+   never leaves the hover zone while moving into the menu. */
 .megaMenu {
   position: absolute;
-  top: calc(100% + 1.2rem);
+  top: 100%;
   left: 50%;
   transform: translateX(-50%);
   background: #ffffff;
   border-radius: 10px;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
-  min-width: 280px;
-  padding: 0.5rem;
-  z-index: 999;
+  min-width: 290px;
+  /* Top padding provides the visual breathing room */
+  padding: 1rem 0.5rem 0.5rem;
+  /* z-index above header's own stacking context */
+  z-index: 200;
   border-top: 3px solid #eab308;
-  animation: fadeSlideDown 0.18s ease;
+  animation: fadeSlideDown 0.15s ease;
 }
 
 @keyframes fadeSlideDown {
   from {
     opacity: 0;
-    transform: translateX(-50%) translateY(-8px);
+    transform: translateX(-50%) translateY(-6px);
   }
   to {
     opacity: 1;
@@ -180,14 +204,14 @@
 .megaMenuInner {
   display: flex;
   flex-direction: column;
-  gap: 0.15rem;
+  gap: 0.1rem;
 }
 
 .megaItem {
   display: flex;
   flex-direction: column;
   gap: 0.2rem;
-  padding: 0.75rem 1rem;
+  padding: 0.7rem 1rem;
   border-radius: 6px;
   text-decoration: none;
   transition: background 0.15s ease;
@@ -198,42 +222,45 @@
 }
 
 .megaLabel {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   font-weight: 600;
   color: #0f172a;
+  transition: color 0.15s;
 }
 
 .megaItem:hover .megaLabel {
-  color: #eab308;
+  color: #ca8a04;
 }
 
 .megaDesc {
-  font-size: 0.82rem;
+  font-size: 0.8rem;
   color: #6b7280;
   line-height: 1.4;
 }
 
-/* Action Buttons */
+/* ── ACTION BUTTONS ── */
 .actionButtons {
   display: flex;
-  gap: 1rem;
+  gap: 0.75rem;
+  flex-shrink: 0;
 }
 
 .outlineBtn {
   background-color: transparent;
   color: #ffffff;
   border: 1px solid #eab308;
-  padding: 0.6rem 1.2rem;
+  padding: 0.55rem 1.1rem;
   border-radius: 4px;
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.88rem;
   cursor: pointer;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  transition: all 0.2s ease;
+  gap: 0.4rem;
+  transition: background 0.2s, color 0.2s;
   text-decoration: none;
   font-family: inherit;
+  white-space: nowrap;
 }
 
 .outlineBtn:hover {
@@ -242,26 +269,218 @@
 }
 
 .btnIcon {
-  font-size: 1.1rem;
+  font-size: 1rem;
 }
 
 .btnIconRight {
-  font-size: 1.2rem;
-  margin-left: 0.25rem;
+  font-size: 1.1rem;
 }
 
-/* Responsive */
-@media (max-width: 900px) {
+/* ── HAMBURGER ── */
+.hamburger {
+  display: none;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.75rem;
+  cursor: pointer;
+  padding: 0.25rem;
+  line-height: 1;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* ── MOBILE DRAWER ── */
+.mobileDrawer {
+  display: none;
+  flex-direction: column;
+  background: #000000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 99;
+  padding: 5.5rem 2rem 2rem;
+  overflow-y: auto;
+  gap: 0.25rem;
+}
+
+.mobileLink {
+  display: block;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  transition: color 0.2s;
+}
+
+.mobileLink:hover,
+.mobileLinkActive {
+  color: #eab308;
+}
+
+/* Mobile accordion group */
+.mobileGroup {
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.mobileGroupBtn {
+  width: 100%;
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1.15rem;
+  font-weight: 600;
+  font-family: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.9rem 0;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.mobileGroupBtn:hover {
+  color: #eab308;
+}
+
+.mobileCaret {
+  font-size: 1.3rem;
+  transition: transform 0.2s ease;
+  flex-shrink: 0;
+}
+
+.mobileGroupLinks {
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 0.75rem 1rem;
+  gap: 0.1rem;
+}
+
+.mobileSubLink {
+  display: block;
+  color: rgba(255,255,255,0.65);
+  text-decoration: none;
+  font-size: 0.97rem;
+  font-weight: 500;
+  padding: 0.55rem 0;
+  transition: color 0.2s;
+}
+
+.mobileSubLink:hover {
+  color: #eab308;
+}
+
+/* Mobile CTA buttons */
+.mobileActions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.mobileActionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem;
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 6px;
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.97rem;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.mobileActionBtn:hover {
+  border-color: #eab308;
+  background: rgba(234,179,8,0.08);
+}
+
+.mobileActionBtnPrimary {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.9rem;
+  background: #eab308;
+  border-radius: 6px;
+  color: #000000;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 0.97rem;
+  transition: background 0.2s;
+}
+
+.mobileActionBtnPrimary:hover {
+  background: #ca9a06;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 1024px) {
   .topBar,
   .mainNav {
-    padding: 0.6rem 1.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 
+  .navLinks {
+    gap: 1.75rem;
+  }
+
+  .actionButtons {
+    gap: 0.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .topBar {
+    padding: 0.5rem 1.5rem;
+    font-size: 0.78rem;
+  }
+
+  .mainNav {
+    padding: 0.8rem 1.5rem;
+  }
+
+  /* Hide desktop nav and action buttons */
+  .navLinks,
   .actionButtons {
     display: none;
   }
 
-  .navLinks {
-    gap: 1.5rem;
+  /* Show hamburger */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Show mobile drawer */
+  .mobileDrawer {
+    display: flex;
+  }
+
+  /* Hide top bar social icons on very small screens to save space */
+  .socialIcons {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .topBar {
+    justify-content: center;
+  }
+
+  .mainNav {
+    padding: 0.75rem 1.25rem;
+  }
+
+  .logoText {
+    font-size: 1.25rem;
   }
 }

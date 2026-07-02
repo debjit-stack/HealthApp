@@ -52,7 +52,9 @@
   font-weight: 600;
   color: rgba(255, 255, 255, 0.8);
   text-decoration: none;
-  transition: background 0.2s, border-color 0.2s;
+  cursor: pointer;
+  font-family: inherit;
+  transition: background 0.2s, border-color 0.2s, color 0.2s;
 }
 
 .productNavItem:hover {
@@ -78,12 +80,8 @@
   align-items: center;
 }
 
-.reverse {
-  direction: rtl;
-}
-
-.reverse > * {
-  direction: ltr;
+.reverse .productVisual {
+  order: -1;
 }
 
 .productInfo {

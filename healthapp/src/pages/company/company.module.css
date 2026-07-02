@@ -268,6 +268,21 @@
   padding-left: calc(50% + 2.5rem);
 }
 
+/* Dot rendered as pseudo on the item, referencing the .timeline container's 50% */
+.timelineItem::after {
+  content: '';
+  position: absolute;
+  left: calc(50% - 7px);
+  top: 1.25rem;
+  width: 14px;
+  height: 14px;
+  background: #577c83;
+  border-radius: 50%;
+  border: 3px solid #ffffff;
+  box-shadow: 0 0 0 2px #577c83;
+  z-index: 1;
+}
+
 .timelineContent {
   background: #ffffff;
   border: 1px solid #e5e7eb;
@@ -306,18 +321,9 @@
   line-height: 1.7;
 }
 
+/* Keep class for backward compat but hide — dot is now a pseudo-element */
 .timelineDot {
-  position: absolute;
-  left: 50%;
-  top: 1.25rem;
-  transform: translateX(-50%);
-  width: 14px;
-  height: 14px;
-  background: #577c83;
-  border-radius: 50%;
-  border: 3px solid #ffffff;
-  box-shadow: 0 0 0 2px #577c83;
-  z-index: 1;
+  display: none;
 }
 
 /* ── TEAM ── */
@@ -661,11 +667,12 @@
   .teamGrid { grid-template-columns: 1fr 1fr; }
   .rolesGrid { grid-template-columns: 1fr; }
   .contactLayout { grid-template-columns: 1fr; gap: 3rem; }
-  .timelineItem.left { padding-right: 0; }
-  .timelineItem.right { padding-left: 0; }
+  .timelineItem.left { padding-right: 0; flex-direction: column; }
+  .timelineItem.right { padding-left: 0; flex-direction: column; }
   .timelineLine { display: none; }
   .timelineDot { display: none; }
-  .timelineItem { flex-direction: column; }
+  .timelineItem::after { display: none; }
+  .timelineContent { width: 100%; }
 }
 
 @media (max-width: 600px) {

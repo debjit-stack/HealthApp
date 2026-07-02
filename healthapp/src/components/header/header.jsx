@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import styles from './header.module.css';
 import { FaEnvelope, FaMapMarkerAlt, FaLinkedinIn, FaInstagram, FaYoutube } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
-import { MdPhone, MdKeyboardArrowDown, MdArrowForward } from 'react-icons/md';
+import { MdPhone, MdKeyboardArrowDown, MdArrowForward, MdMenu, MdClose } from 'react-icons/md';
 
 const platformLinks = [
   { label: 'CareOS', desc: 'The unified healthcare operating system', href: '/platform#careos' },
@@ -26,17 +26,10 @@ const companyLinks = [
   { label: 'Contact Us', desc: 'Get in touch with our team', href: '/company#contact' },
 ];
 
-const Dropdown = ({ label, items, isActive }) => {
+/* ── Desktop Dropdown: hover-only, no click toggle ── */
+const Dropdown = ({ label, items, isActive, onNavigate }) => {
   const [open, setOpen] = useState(false);
   const ref = useRef(null);
-
-  useEffect(() => {
-    const handleClickOutside = (e) => {
-      if (ref.current && !ref.current.contains(e.target)) setOpen(false);
-    };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
-  }, []);
 
   return (
     <div
@@ -47,22 +40,28 @@ const Dropdown = ({ label, items, isActive }) => {
     >
       <button
         className={`${styles.navBtn} ${isActive ? styles.activeLink : ''}`}
-        onClick={() => setOpen((o) => !o)}
         aria-expanded={open}
+        aria-haspopup="true"
+        tabIndex={0}
+        onFocus={() => setOpen(true)}
+        onBlur={(e) => {
+          if (!ref.current?.contains(e.relatedTarget)) setOpen(false);
+        }}
       >
         {label}
         <MdKeyboardArrowDown className={`${styles.caret} ${open ? styles.caretOpen : ''}`} />
       </button>
 
       {open && (
-        <div className={styles.megaMenu}>
+        <div className={styles.megaMenu} role="menu">
           <div className={styles.megaMenuInner}>
             {items.map((item) => (
               <Link
                 key={item.label}
                 to={item.href}
                 className={styles.megaItem}
-                onClick={() => setOpen(false)}
+                role="menuitem"
+                onClick={() => { setOpen(false); onNavigate && onNavigate(); }}
               >
                 <span className={styles.megaLabel}>{item.label}</span>
                 <span className={styles.megaDesc}>{item.desc}</span>
@@ -75,13 +74,50 @@ const Dropdown = ({ label, items, isActive }) => {
   );
 };
 
+/* ── Mobile accordion item ── */
+const MobileNavGroup = ({ label, items, onNavigate }) => {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className={styles.mobileGroup}>
+      <button className={styles.mobileGroupBtn} onClick={() => setOpen(o => !o)}>
+        {label}
+        <MdKeyboardArrowDown className={`${styles.mobileCaret} ${open ? styles.caretOpen : ''}`} />
+      </button>
+      {open && (
+        <div className={styles.mobileGroupLinks}>
+          {items.map(item => (
+            <Link
+              key={item.label}
+              to={item.href}
+              className={styles.mobileSubLink}
+              onClick={onNavigate}
+            >
+              {item.label}
+            </Link>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 const Header = () => {
   const location = useLocation();
   const path = location.pathname;
+  const [mobileOpen, setMobileOpen] = useState(false);
+
+  /* close mobile menu on route change */
+  useEffect(() => { setMobileOpen(false); }, [location]);
+
+  /* prevent body scroll when drawer open */
+  useEffect(() => {
+    document.body.style.overflow = mobileOpen ? 'hidden' : '';
+    return () => { document.body.style.overflow = ''; };
+  }, [mobileOpen]);
 
   return (
     <header className={styles.headerContainer}>
-      {/* TOP BAR */}
+      {/* ── TOP BAR ── */}
       <div className={styles.topBar}>
         <div className={styles.contactInfo}>
           <a href="mailto:info@plenome.com" className={styles.topLink}>
@@ -103,13 +139,14 @@ const Header = () => {
         </div>
       </div>
 
-      {/* MAIN NAV */}
+      {/* ── MAIN NAV ── */}
       <div className={styles.mainNav}>
         <Link to="/" className={styles.logo}>
           <div className={styles.logoIcon}>P</div>
           <span className={styles.logoText}>Plenome</span>
         </Link>
 
+        {/* Desktop nav */}
         <nav className={styles.navLinks}>
           <Link to="/" className={`${styles.navLink} ${path === '/' ? styles.activeLink : ''}`}>
             Home
@@ -127,7 +164,37 @@ const Header = () => {
             Contact Us <MdArrowForward className={styles.btnIconRight} />
           </Link>
         </div>
+
+        {/* Hamburger */}
+        <button
+          className={styles.hamburger}
+          onClick={() => setMobileOpen(o => !o)}
+          aria-label={mobileOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={mobileOpen}
+        >
+          {mobileOpen ? <MdClose /> : <MdMenu />}
+        </button>
       </div>
+
+      {/* ── MOBILE DRAWER ── */}
+      {mobileOpen && (
+        <div className={styles.mobileDrawer}>
+          <Link to="/" className={`${styles.mobileLink} ${path === '/' ? styles.mobileLinkActive : ''}`} onClick={() => setMobileOpen(false)}>
+            Home
+          </Link>
+          <MobileNavGroup label="Platform" items={platformLinks} onNavigate={() => setMobileOpen(false)} />
+          <MobileNavGroup label="Products" items={productLinks} onNavigate={() => setMobileOpen(false)} />
+          <MobileNavGroup label="Company" items={companyLinks} onNavigate={() => setMobileOpen(false)} />
+          <div className={styles.mobileActions}>
+            <Link to="/company#contact" className={styles.mobileActionBtn} onClick={() => setMobileOpen(false)}>
+              <MdPhone /> Sales Enquiry
+            </Link>
+            <Link to="/company#contact" className={styles.mobileActionBtnPrimary} onClick={() => setMobileOpen(false)}>
+              Contact Us <MdArrowForward />
+            </Link>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

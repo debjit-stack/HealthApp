@@ -1,7 +1,5 @@
-/* Import a clean, modern geometric font typical for deep-tech/health-tech */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
 
-/* Global Reset */
 * {
   box-sizing: border-box;
   margin: 0;
@@ -11,21 +9,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #f8fafc; /* Crisp, light clinical background */
+  background-color: #f8fafc;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  color: #0f172a; /* Deep slate for strong readability */
+  color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  scroll-behavior: smooth; /* Smooth scrolling for navigation links */
+  scroll-behavior: smooth;
 }
-
-/* ========================================
-  APP-LEVEL LAYOUT (#root)
-  ========================================
-  This replaces the old grid logic. By making the root a flex column
-  with a minimum height of 100vh, we guarantee the footer never floats 
-  up awkwardly on short pages.
-*/
 
 #root {
   display: flex;
@@ -33,10 +23,8 @@ html, body {
   min-height: 100vh;
 }
 
-/* By setting flex: 1 on main, it automatically expands to fill all 
-  available space between the Header and the Footer.
-*/
-main {
+/* Scoped to direct child only — prevents double-flex on nested page divs */
+#root > div {
   flex: 1;
   display: flex;
   flex-direction: column;
